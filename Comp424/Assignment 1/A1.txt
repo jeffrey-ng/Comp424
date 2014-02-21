@@ -1,0 +1,55 @@
+1a)The state space for this puzzle is the position of the game pieces on the 9x9 game board. For each position on the grid, there is either a state of having a gampiece or not. Using this state space, there are (81 10), 81 choose 10 states since there are 81 available spaces & 10 will be choosen.
+
+1b)Each piece has a maximum of 4 moves. The maximum branching factor is 10^4
+
+1c) Using no jumping, 1(10) + 2(11) + 3(12) + 3(13) = 120
+
+1d)Iterative Deepening. It is the opitmal solution for problems with unit step costs where there are large state spaces with unknown solution path lenghts.
+
+2a) i. True. Since a heuristic of 0 will never make it so that hte esimated cost is greater than the actual cost of reaching the goal.
+	ii. False. Example: If there were 9 pieces at the goal zone, h(n) = 9. The solution would be greater then 9 for the last piece. Not admissable.
+	iii. True. Since jumping costs the same as moving while gaining double the space.
+	iv. True. Manhattan distance doesn't take into account other pieces.
+
+2b) i. True. Same as above
+	ii. False. Same as above
+	iii. True. Costs shouldn't change if a heuristic is admissable.
+	iv. True. Same as above
+
+3a) Assuming that the observations include observing cheese, the initial belief state = {Start}. Else if obeservations do not include cheese the initial belief state = {Start,Cheese}.
+
+3b) 2^16. There are 16 states. They are either in or out of the belief state.
+
+3c) {1,2,3,4,5} -D-> {2,3,4,6,7,8,9} -L-> {1,2,3,6,7,8,9} -L-> {1,2,6,7,8,9} -D-> {2,6,8,9,10,14}
+
+3d) {1,2,3,4,5} -R-> {2,3,4,5} -R-> {3,4,5} -R-> {4,5} -R-> {5}
+	-D-> {7,9} -D-> {9,14} -D-> {14} -L-> {12,13} -U-> {13,Cheese}
+	-L-> {{Cheese,11,12} -U-> {Cheese,11} -R-> {Cheese,12,13}}(LOOP BACK AND FORTH) 
+
+3e)
+
+4a) i. The variables in this case would be the labeled words. There are 6 variables (a1,a2,a3,d1,d2,d3)
+	ii. The variables would be each individual space/box
+	There would be 9 variables
+
+4b)
+
+
+4c) The unary constraint ong this graph for each node would to only use words from within the word-list provided. This does not reduce the domain of each variable.
+
+4d) The arc-consistency would be based on a binary intersection constraint. (Wrote a python program to determine reduced domain)
+	A1: ['bee', 'boa', 'lee']
+	A2: ['ear', 'oaf']
+	A3: ['arc', 'are', 'ark', 'arm', 'art', 'eft']
+	D1: ['bee', 'boa', 'lee']
+	D2: ['ear', 'oaf']
+	D3: ['arc', 'are', 'ark', 'arm', 'art', 'eft']
+
+4e) A1: boa
+	A2: ear
+	A3: eft
+	D1: bee
+	d2: oaf
+	d3: art
+
+	
